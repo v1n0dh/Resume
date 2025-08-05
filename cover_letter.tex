@@ -1,0 +1,80 @@
+\documentclass[11pt]{letter}
+
+\usepackage{fontspec} % Ensure proper font encoding for PDF readability
+\usepackage{geometry}
+\usepackage[colorlinks=true,
+            linkcolor = blue,
+            urlcolor  = blue,
+            citecolor = blue,
+            anchorcolor = blue]{hyperref}
+
+\renewcommand{\maketitle}[5] {
+	{\scshape{\Huge {#1}}} \\
+	\hrule
+	{#2} | {#3} | \href{mailto:#4}{#4} | \href{https://#5}{Linkedin}
+	\vspace*{0.25em}
+	\hrule
+}
+
+\newcommand{\tocompany}[3] {
+	\textbf{#1} \\
+	\textbf{#2} \\
+	{#3} \\
+}
+
+\geometry{
+	letterpaper,
+	left=1in,
+	right=1in,
+	top=1in,
+	bottom=1in
+}
+
+\pagestyle{empty}
+
+\begin{document}
+
+\maketitle
+{Vinodh Balakrishna}
+{East Palo Alto, CA, 94303}
+{+1 (913) 326-4029}
+{vinodh.b.27@gmail.com}
+{www.linkedin.com/in/vinodh27}
+
+\vspace{1em}
+
+\today
+
+\vspace{1em}
+
+\tocompany
+{Hiring Manager}
+{Illumio}
+{Sunnyvale, CA}
+
+Dear Hiring Manager,
+
+\bigskip
+
+I'm writing to express my interest in the Software Engineer – C++/Networking role at Illumio. With hands-on experience working on embedded Linux platforms, secure firmware environments, and low-level systems development in C++, I’m excited about the opportunity to contribute to your mission of redefining cyber resilience through Zero Trust segmentation.
+
+\vspace{0.5em}
+At Comcast, I worked on the Platform Security team, where I contributed to enhancing the reliability and security of embedded Linux firmware for over a million consumer devices. My work involved building and customizing firmware using the Yocto Project, implementing features like restricted shell hardening, certificate rotation, and enabling ASLR on RDK-based platforms. I also actively participated in debugging devices over UART, integrating CI/CD pipelines, and improving internal tooling.
+
+\vspace{0.5em}
+Outside of industry experience, I’ve independently developed system-level C++ projects such as a \mbox{BitTorrent} client leveraging memory-mapped I/O and multithreading, a custom Linux shell, and a real-time status bar using sysfs and X11. These projects reflect my drive to explore OS internals and write efficient, maintainable code at the systems layer.
+
+\vspace{0.5em}
+I’m particularly drawn to Illumio's focus on container and cloud-native security, and while I’m still building my experience with Kubernetes, I’m eager to learn and contribute to agent design, telemetry, and multi-threaded application development.
+
+\vspace{0.5em}
+Thank you for considering my application. I’d welcome the opportunity to connect and learn how I can best support Illumio’s engineering goals.
+
+\bigskip
+
+\vfill
+
+Sincerely, \\
+\textbf{Vinodh Balakrishna}
+
+\end{document}
