@@ -5,6 +5,7 @@
 \usepackage{lmodern} % Use Latin Modern fonts (compatible with pdflatex)
 \usepackage{enumitem}
 \usepackage{array}
+\usepackage{tabularx}
 \usepackage{geometry}
 \usepackage{titlesec}
 \usepackage[colorlinks=true,
@@ -17,10 +18,10 @@
 
 \geometry{
 	letterpaper,
-	left=0.75cm,
-	right=0.75cm,
-	top=0.75cm,
-	bottom=0.75cm
+	left=1cm,
+	right=1cm,
+	top=1cm,
+	bottom=1cm
 }
 
 \pagestyle{empty}
@@ -37,7 +38,7 @@
 	\vspace*{0.25em}
 	%{#2} \\
 	%\vspace*{0.25em}
-		{#3} \textbullet \hspace*{0.15em} {#4} \textbullet \hspace*{0.15em} \href{mailto:#5}{#5} \textbullet  \hspace*{0.15em} \href{https://#6}{#6}
+		{#3} | {#4} | \href{mailto:#5}{\underline {#5}} | \href{https://#6}{\underline {#6}}
 	\end{center}
 }
 
@@ -63,7 +64,7 @@
 \maketitle
 {Vinodh Balakrishna}
 {Embedded Software Engineer | C \& C++ / Python / Rust Programmer | GNU/Linux Specialist}
-{Palo Alto, CA}
+{East Palo Alto, CA}
 {+1 9133264029}
 {vinodh.b.27@gmail.com}
 {www.linkedin.com/in/vinodh27}
@@ -71,7 +72,64 @@
 \thispagestyle{empty}
 
 \section{Professional Summary}
-Embedded and Systems Software Engineer with a strong foundation in low-level programming, memory management, concurrency, and inter-process communication. Skilled in building efficient, reliable software on Linux through deep understanding of operating system internals and system-level debugging.
+\noindent\begin{minipage}{\textwidth}
+Embedded Systems Software Engineer with deep expertise in low-level programming, OS internals, and Linux-based platforms. Experienced in firmware development, hardware bring-up, and debugging complex system-level issues across ARM and x86 architectures. Skilled at writing clean, efficient code and bridging the hardware-software boundary. A focused problem-solver with a curious mindset, thriving both independently and in collaborative, fast-paced environments to deliver reliable, maintainable solutions.
+\end{minipage}
+
+\section{Experience}
+\cmpnysection
+{Comcast Corporation}
+{Chennai, India}
+{Embedded Linux Engineer}
+{Dec 2021 - Jul 2023}
+\begin{itemize}[leftmargin=6mm]
+	\item{Contributed to the Platform Security team by leveraging the Yocto Project build system and RDK software stack to create and manage custom Linux firmware for over \mbox{1 million} CPE devices, including set-top boxes, routers, and TVs.}
+	\item {Secured and optimized a custom Restricted Shell with a multi-threaded architecture by implementing command logging, unauthorized command blocking, and tab completion, boosting efficiency and usability by 40\%.}
+	\item{Migrated SBOM functionality from Yocto Kirkstone to Dunfell to enhance supply chain security and maintain 100\% software inventory transparency.}
+	\item{Renewed and rotated 5+ X.509 PKI certificates, ensuring uninterrupted secure TLS communication with zero certificate expiry incidents during release cycles.}
+	\item{Performed key platform security enhancements to RDKB devices by enabling \texttt{ASLR} with position-independent code and securely removing video analytics module, improving firmware performance by 25\% while reducing maintenance overhead.}
+	\item{Accessed Linux-based CPE devices on ARM and Atom platforms for board/device bring-up and firmware debugging by connecting via Raspberry Pi serial console using Minicom with appropriate baud rate settings.}
+	\item{Used CI/CD pipelines with Jenkins and Shell scripting to trigger and monitor automated builds and tests in an Agile environment, while utilizing Gerrit for code commits and reviews.}
+\end{itemize}
+
+\section{Technical Projects}
+\projsection
+{Torrent CLI - BitTorrent Client}
+{https://github.com/v1n0dh/torrent\_cli}
+\begin{itemize}[leftmargin=6mm]
+	\item{Developed a high-performance BitTorrent client in modern C++23, enabling efficient concurrent downloads and full support for the BitTorrent protocol including peer communication, tracker requests, and piece/block management.}
+	\item{Implemented zero-copy memory-mapped I/O using \texttt{mmap} and \texttt{RAII}, thread-safe message passing with custom \texttt{Shared\_Queue} classes, and concurrency control using mutexes and futures to coordinate peer threads.}
+	\item{Leveraged ASIO library for scalable asynchronous networking to handle multiple peer connections with fine-grained control, and designed full Bencode encoder/decoder for .torrent metadata serialization and deserialization.}
+	\item{Used debugging and analysis tools including Wireshark for network traffic inspection, Valgrind for memory diagnostics, and strace to trace syscalls and debug low-level I/O behavior.}
+\end{itemize}
+
+\vspace*{0.5em}
+\projsection
+{Custom Linux Shell (Vshell)}
+{https://github.com/v1n0dh/vshell}
+\begin{itemize}[leftmargin=6mm]
+	\item{Built a custom shell in C++, inspired by a coding challenge at \href{https://codingchallenges.fyi/challenges/challenge-shell}{\underline {codingchallenges.fyi}}, closely resembling bash, completing the project within 2 weeks to demonstrate core shell functionalities.}
+	\item{Incorporated key shell features, including command execution, I/O redirection, and pipes, facilitating efficient user interaction with the system.}
+	\item{Integrated tab completion for files and command history, enhancing user experience and productivity.}
+\end{itemize}
+
+\vspace*{0.5em}
+\projsection
+{Real-Time System Metrics Statusbar}
+{https://github.com/v1n0dh/dwmstatus}
+\begin{itemize}[leftmargin=6mm]
+	\item{Created a custom status bar for the dwm window manager in C that displays real-time system metrics such as network speeds, Wi-Fi SSID, CPU temperature, RAM usage, battery status, and current time.}
+	\item{Collected system data by directly reading low-level kernel interfaces under \texttt{/sys/class} for power supply, thermal zones, memory, and network statistics, and used X11 library to dynamically update the status bar on the dwm.}
+	\item{Implemented network speed calculation by tracking changes in \texttt{RX/TX} bytes per second from network interface statistics, and used wireless extensions ioctl calls to fetch Wi-Fi SSID, providing live connectivity information.}
+\end{itemize}
+
+\section{Technical Skills}
+\textbf{Programming Languages:} C, C++, Python, Shell Scripting, Java, Rust, x86 Assembly \\
+\textbf{Core Competencies:} Data Structures \& Algorithms, Memory Management, Concurrency (Multi-threading/Processing), IPC \\
+\textbf{Operating Systems \& Embedded:} GNU Linux/Unix Systems, Embedded Linux Firmware, RTOS \\
+\textbf{Networking \& Communication:} TCP/IP, UDP, SNMP, HTTP, TLS/SSL, Networking Protocols, UART, SPI, I2C \\
+\textbf{Frameworks \& Libraries:} Yocto Project, RDK, GNU Readline, Jsoncpp, ASIO (non-Boost) \\
+\textbf{Tools:} CMake, GDB, QEMU, OpenSSL, Wireshark, Jenkins, Git, Splunk, Vim, Emacs
 
 \noindent
 \section{Education}
@@ -79,82 +137,20 @@ Embedded and Systems Software Engineer with a strong foundation in low-level pro
 {University of Central Missouri}
 {Lee's Summit, MO}
 {Aug 2023 {-} May 2025}
-{Masters {-} Computer Science}
-{Related Coursework: Operating Systems, Algorithms, Computer Networking \& Security, Compiler Design \& Construction, Cryptographic Algorithms and Protocols, Web Application Security, Cloud Security}
+{Master's in Computer Science}
+{{\bfseries \textit {Coursework:}} Operating Systems, Algorithms, Computer Networking \& Security, Compiler Design \& Construction, Cryptographic Algorithms and Protocols, Web Application Security, Cloud Security}
 
 \edusection
 {Bharath Institute of Higher Education and Research}
 {Chennai, India}
 {Jul 2017 {-} May 2021}
-{B.Tech {-} Computer Science Engineering}
+{B.Tech in Computer Science Engineering}
 {}
-
-\section{Technical Skills}
-\textbf{Programming:} C/C++, Python, Shell Scripting, Java, Rust, x86 Assembly \\
-\textbf{Core Competencies:} Data Structures \& Algorithms, Memory Management, Concurrency (Multi-threading/Processing), IPC \\
-\textbf{Operating Systems:}	GNU Linux/Unix Systems, Embedded Linux Firmware \\
-\textbf{Networking:} TCP/IP, UDP, SNMP, Networking Protocols \\
-\textbf{Frameworks \& Libraries:} Yocto Project, RDK, GNU Readline, Jsoncpp, ASIO (non-Boost) \\
-\textbf{Tools:} CMake, GDB, QEMU, OpenSSL, Wireshark, Jenkins, Git, Splunk, Vim
-
-\section{Experience}
-\cmpnysection
-{Comcast Corporation}
-{Chennai, India}
-{Embedded Linux Engineer}
-{Dec 2021 - July 2023}
-\begin{itemize}[leftmargin=6mm]
-	\item{Contributed to the Platform Security team within the TPX unit, focusing on hardening embedded Linux systems for large-scale CPE deployments.}
-	\item{Leveraged the \textbf{Yocto Project} build system and RDK software stack to create and manage custom Linux firmware for over \mbox{1 million} CPE devices, including set-top boxes, routers, and TVs.}
-	\item{Enhanced security in the custom Restricted Shell by implementing command logging and blocking unauthorized commands, significantly improving SSH access security to CPE devices.}
-	\item{Implemented a Tab Completion feature in the Restricted Shell using the \textbf{Readline library} and a multi-threaded approach, which increased shell efficiency by 40\% and improved user interaction.}
-	\item{Migrated SBOM functionality from Yocto Kirkstone to Dunfell, ensuring backward compatibility while enhancing supply chain security and maintaining 100\% transparency in the software inventory.}
-	\item{Enabled security feature \texttt{ASLR} for multiple RDKB devices by utilizing position-independent code, which significantly reduced memory-related security vulnerabilities.}
-	\item{Renewed 5+ \texttt{X.509 PKI certificates} to maintain secure TLS communications across internal components, ensuring encrypted interactions within the system.}
-	\item{Securely removed the video analytics module from RDKB devices, optimizing firmware performance, improving system efficiency, and reducing maintenance overhead.}
-	\item{Debugged RDKV and RDKB devices running on \textbf{ARM} and \textbf{Atom} platforms, using serial port connections to analyze logs, identify issues, and provide fixes for improved system stability.}
-\end{itemize}
-
-\section{Personal Projects}
-\projsection
-{Torrent CLI - BitTorrent Client}
-{https://github.com/v1n0dh/torrent\_cli}
-\begin{itemize}[leftmargin=6mm]
-	\item{Built a BitTorrent client using modern \texttt{C++23} features such as concepts, smart pointers, and multi-threading for high-performance concurrent downloads.}
-	\item{Created a full Bencode encoder and decoder to serialize/deserialize \texttt{.torrent} metadata files, enabling seamless integration with BitTorrent protocol requirements.}
-	\item{Designed a zero-copy memory-mapped I/O system using \texttt{mmap}, \texttt{std::memcpy}, \texttt{msync}, and RAII-based resource management for efficient disk writes.}
-	\item{Developed core BitTorrent protocol features, including peer wire communication, tracker requests (HTTP), message parsing, and piece/block download strategies.}
-	\item{Built a thread-safe message-passing system using custom Shared\_Queue classes to manage download tasks and inter-thread communication.}
-	\item{Verified data integrity through \texttt{SHA1} hash validation and reconstructed original files from downloaded pieces with byte-level accuracy.}
-	\item{Leveraged \textbf{ASIO} library for scalable networking, handling multiple peer connections asynchronously with fine-grained control.}
-	\item{Applied mutexes and futures to coordinate peer threads and ensure reliable shutdown of asynchronous operations.}
-	\item{Utilized Wireshark to inspect peer connections and analyze BitTorrent message flows (e.g., piece requests/responses); employed Valgrind for memory diagnostics and strace to trace syscalls and debug low-level I/O behavior.}
-\end{itemize}
-
-\projsection
-{Custom Linux Shell (Vshell)}
-{https://github.com/v1n0dh/vshell}
-\begin{itemize}[leftmargin=6mm]
-	\item{Developed a custom shell in C++, inspired by a coding challenge at \href{https://codingchallenges.fyi/challenges/challenge-shell}{\underline {codingchallenges.fyi}}, closely resembling bash.}
-	\item{Incorporated key shell features, including command execution, I/O redirection, and pipes, facilitating efficient user interaction with the system.}
-	\item{Integrated tab completion for files and command history, enhancing user experience and productivity.}
-\end{itemize}
-
-\projsection
-{Real-Time System Metrics Statusbar}
-{https://github.com/v1n0dh/dwmstatus}
-\begin{itemize}[leftmargin=6mm]
-	\item{Created a custom status bar for the dwm window manager using C programming, displaying real-time system metrics such as network speeds, Wi-Fi network, CPU temperature, RAM usage, battery status, and clock.}
-	\item{Gathered system statistics directly from low-level file structures like \texttt{/sys/class} for battery and network information, and used \textbf{X11 library} to dynamically update the status bar.}
-	\item{Integrated network speed calculation by monitoring changes in \texttt{RX/TX} bytes and implemented Wi-Fi network detection using shell commands.}
-	\item{Optimized system resource usage by writing efficient C code, providing critical information without relying on external tools or scripts.}
-\end{itemize}
 
 \section{Certifications}
 \begin{itemize}[leftmargin=6mm]
-
-	\item{Rust Essential Training by Barron Stone, LinkedIn Learnings} - \href{https://www.linkedin.com/learning/certificates/5b0eb9a5191ed3a4cb605f7b8b9e5864ed123e5b13b5f8f68bfc99b6ff8cd87d?trk=share_certificate}{\underline {Certificate Link}}
-	\item{Linux Device Drivers by Kevin Dankwardt, LinkedIn Learnings} - \href{https://www.linkedin.com/learning/certificates/ef2284b25b44e40cdb305a085b6a77f7a4f0eac3762a844f5530279dd01a9549?trk=share_certificate}{\underline {Certificate Link}}
+	\item{Rust Essential Training by Barron Stone, LinkedIn Learning} - \href{https://www.linkedin.com/learning/certificates/5b0eb9a5191ed3a4cb605f7b8b9e5864ed123e5b13b5f8f68bfc99b6ff8cd87d?trk=share_certificate}{\underline {Certificate Link}}
+	\item{Linux Device Drivers by Kevin Dankwardt, LinkedIn Learning} - \href{https://www.linkedin.com/learning/certificates/ef2284b25b44e40cdb305a085b6a77f7a4f0eac3762a844f5530279dd01a9549?trk=share_certificate}{\underline {Certificate Link}}
 \end{itemize}
 
 \end{document}
